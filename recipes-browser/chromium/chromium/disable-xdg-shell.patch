@@ -1,0 +1,18 @@
+--- a/ozone/wayland/shell/shell.cc	2015-09-30 15:59:44.711063501 +0000
++++ b/ozone/wayland/shell/shell.cc	2015-09-30 16:03:58.140035543 +0000
+@@ -59,6 +59,7 @@
+     DCHECK(!shell_);
+     shell_ = static_cast<wl_shell*>(
+         wl_registry_bind(registry, name, &wl_shell_interface, 1));
++#if 0
+   } else if ((strcmp(interface, "xdg_shell") == 0) &&
+                 getenv("OZONE_WAYLAND_USE_XDG_SHELL")) {
+       DCHECK(!xdg_shell_);
+@@ -70,6 +71,7 @@
+         WaylandShell::XDGHandlePing
+       };
+       xdg_shell_add_listener(xdg_shell_, &xdg_shell_listener, NULL);
++#endif
+   } else if (strcmp(interface, "ivi_application") == 0) {
+       DCHECK(!ivi_application_);
+       ivi_application_ = static_cast<ivi_application*>(
